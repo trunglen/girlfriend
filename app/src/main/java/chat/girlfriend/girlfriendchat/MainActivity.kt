@@ -9,23 +9,21 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.view.ViewPager
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import chat.girlfriend.girlfriendchat.models.Girl
+import com.google.firebase.database.*
 
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_main.*
-import kotlinx.android.synthetic.main.fragment_main.view.*
-import com.google.firebase.storage.FirebaseStorage
-
 
 
 class MainActivity : AppCompatActivity() {
 
-    var storage = FirebaseStorage.getInstance()
     private var mSectionsPagerAdapter: SectionsPagerAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,6 +38,7 @@ class MainActivity : AppCompatActivity() {
         container.adapter = mSectionsPagerAdapter
         container.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabs))
         tabs.addOnTabSelectedListener(TabLayout.ViewPagerOnTabSelectedListener(container))
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -84,6 +83,9 @@ class MainActivity : AppCompatActivity() {
      * A placeholder fragment containing a simple view.
      */
     class PlaceholderFragment : Fragment() {
+        // Write a message to the database
+        var database = FirebaseDatabase.getInstance()
+        var myRef = database.getReference().child("girl")
 
         override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                                   savedInstanceState: Bundle?): View? {
@@ -95,12 +97,55 @@ class MainActivity : AppCompatActivity() {
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
             var girls = ArrayList<Girl>()
-            girls.add(Girl("Ana", "https://images.pexels.com/photos/160699/girl-dandelion-yellow-flowers-160699.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260", emptyArray(), "", ""))
-            girls.add(Girl("Ana", "https://i.ytimg.com/vi/C-ngHa0JpFo/maxresdefault.jpg", emptyArray(), "", ""))
-            girls.add(Girl("Ana", "https://firebasestorage.googleapis.com/v0/b/opencoder-89f02.appspot.com/o/girl%2Fadv.png?alt=media&token=d3b29337-577b-4fb7-9678-20e4562fa17f", emptyArray(), "", ""))
             var galleryAdapter = GalleryGridViewAdapter(context!!, girls)
-            galleryHolder.adapter = galleryAdapter
+            // Read from the database
+            myRef.limitToFirst(3).addChildEventListener(object : ChildEventListener {
+                override fun onCancelled(p0: DatabaseError?) {
+                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                }
 
+                override fun onChildMoved(p0: DataSnapshot?, p1: String?) {
+                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                }
+
+                override fun onChildChanged(p0: DataSnapshot?, p1: String?) {
+                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                }
+
+                override fun onChildAdded(p0: DataSnapshot?, p1: String?) {
+                    val value = p0?.getValue(String::class.java)
+                    Log.d("load_success", "Value is: " + value!!)
+                }
+
+                override fun onChildRemoved(p0: DataSnapshot?) {
+                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                }
+
+            })
+            myRef.limitToFirst(3).addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    // This method is called once with the initial value and again
+                    // whenever data at this location is updated.
+                    Log.d("load_success", "Value is: ")
+                    val value = dataSnapshot.getValue(String::class.java)
+                    Log.d("load_success", "Value is: " + value!!)
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    // Failed to read value
+                    Log.w("load_fail", "Failed to read value.", error.toException())
+                }
+            })
+            myRef.limitToFirst(3).addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onCancelled(p0: DatabaseError?) {
+
+                }
+
+                override fun onDataChange(p0: DataSnapshot?) {
+                    Log.d("success", p0.toString())
+                }
+            })
+            galleryHolder.adapter = galleryAdapter
         }
 
         companion object {
