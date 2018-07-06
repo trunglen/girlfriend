@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/add_friendx24"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="86dp"
+        android:id="@+id/btnAddFriend"
+        android:visibility="invisible"
+        />
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/btnViewVideo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/view_video"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="86dp"
+        android:layout_marginRight="16dp"
+        android:visibility="invisible"
+        />
 </FrameLayout>

@@ -1,5 +1,6 @@
 package chat.girlfriend.girlfriendchat
 
+import android.content.Intent
 import android.support.design.widget.TabLayout
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
@@ -41,26 +42,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        val id = item.itemId
-
-        if (id == R.id.action_settings) {
-            return true
-        }
-
-        return super.onOptionsItemSelected(item)
-    }
-
-
     /**
      * A [FragmentPagerAdapter] that returns a fragment corresponding to
      * one of the sections/tabs/pages.
@@ -85,12 +66,11 @@ class MainActivity : AppCompatActivity() {
     class PlaceholderFragment : Fragment() {
         // Write a message to the database
         var database = FirebaseDatabase.getInstance()
-        var myRef = database.getReference().child("girl")
+        var myRef = database.getReference("girl")
 
         override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                                   savedInstanceState: Bundle?): View? {
             val rootView = inflater.inflate(R.layout.fragment_main, container, false)
-
             return rootView
         }
 
@@ -98,54 +78,56 @@ class MainActivity : AppCompatActivity() {
             super.onViewCreated(view, savedInstanceState)
             var girls = ArrayList<Girl>()
             var galleryAdapter = GalleryGridViewAdapter(context!!, girls)
-            // Read from the database
-            myRef.limitToFirst(3).addChildEventListener(object : ChildEventListener {
-                override fun onCancelled(p0: DatabaseError?) {
-                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-                }
-
-                override fun onChildMoved(p0: DataSnapshot?, p1: String?) {
-                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-                }
-
-                override fun onChildChanged(p0: DataSnapshot?, p1: String?) {
-                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-                }
-
-                override fun onChildAdded(p0: DataSnapshot?, p1: String?) {
-                    val value = p0?.getValue(String::class.java)
-                    Log.d("load_success", "Value is: " + value!!)
-                }
-
-                override fun onChildRemoved(p0: DataSnapshot?) {
-                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-                }
-
-            })
-            myRef.limitToFirst(3).addValueEventListener(object : ValueEventListener {
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    // This method is called once with the initial value and again
-                    // whenever data at this location is updated.
-                    Log.d("load_success", "Value is: ")
-                    val value = dataSnapshot.getValue(String::class.java)
-                    Log.d("load_success", "Value is: " + value!!)
-                }
-
-                override fun onCancelled(error: DatabaseError) {
-                    // Failed to read value
-                    Log.w("load_fail", "Failed to read value.", error.toException())
-                }
-            })
-            myRef.limitToFirst(3).addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onCancelled(p0: DatabaseError?) {
-
-                }
-
-                override fun onDataChange(p0: DataSnapshot?) {
-                    Log.d("success", p0.toString())
-                }
-            })
             galleryHolder.adapter = galleryAdapter
+            galleryHolder.setOnItemClickListener { parent, view, position, id ->
+                val intent = Intent(activity, DetailActivity::class.java)
+                intent.putExtra("fb_url", girls.get(position).fb_url)
+                intent.putExtra("girl_gallery", girls.get(position).gallery)
+                startActivity(intent)
+            }
+            if (arguments?.get(ARG_SECTION_NUMBER) == 1) {
+//                myRef.addListenerForSingleValueEvent(object : ValueEventListener {
+//                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+//                        // This method is called once with the initial value and again
+//                        // whenever data at this location is updated.
+//                        val value = dataSnapshot.children.mapNotNull {
+//                            Log.d("load_success", it.getValue<Girl>(Girl::class.java)!!.thumb)
+//                            girls.add(it.getValue<Girl>(Girl::class.java)!!)
+//                            galleryAdapter.notifyDataSetChanged()
+//                        }
+//                    }
+//
+//                    override fun onCancelled(error: DatabaseError) {
+//                        Log.w("load_fail", "Failed to read value.", error.toException())
+//                    }
+//                })
+                myRef.addChildEventListener(object : ChildEventListener {
+                    override fun onCancelled(p0: DatabaseError?) {
+                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                    }
+
+                    override fun onChildMoved(p0: DataSnapshot?, p1: String?) {
+                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                    }
+
+                    override fun onChildChanged(p0: DataSnapshot?, p1: String?) {
+                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                    }
+
+                    override fun onChildAdded(p0: DataSnapshot?, p1: String?) {
+                        var girl = p0!!.getValue<Girl>(Girl::class.java)!!
+                        girl.id = p0!!.key
+                        girls.add(girl)
+                        galleryAdapter.notifyDataSetChanged()
+                    }
+
+                    override fun onChildRemoved(p0: DataSnapshot?) {
+                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                    }
+
+                })
+            }
+
         }
 
         companion object {
@@ -160,6 +142,7 @@ class MainActivity : AppCompatActivity() {
              * number.
              */
             fun newInstance(sectionNumber: Int): PlaceholderFragment {
+
                 val fragment = PlaceholderFragment()
                 val args = Bundle()
                 args.putInt(ARG_SECTION_NUMBER, sectionNumber)
