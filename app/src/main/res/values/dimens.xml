@@ -4,4 +4,98 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="appbar_padding_top">8dp</dimen>
+
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+
+    <dimen name="nav_header_height">176dp</dimen>
+
+    <dimen name="padding_list_row">16dp</dimen>
+
+    <dimen name="messages_padding_left">72dp</dimen>
+
+    <dimen name="icon_width_height">40dp</dimen>
+
+    <dimen name="msg_text_primary">16sp</dimen>
+
+    <dimen name="msg_text_secondary">14sp</dimen>
+
+    <dimen name="icon_star">25dp</dimen>
+
+    <dimen name="icon_text">22dp</dimen>
+
+    <dimen name="post_feature">110dp</dimen>
+
+    <dimen name="timestamp">12dp</dimen>
+
+    <dimen name="text_size_tiny">9sp</dimen>
+
+    <dimen name="text_size_small">11sp</dimen>
+
+    <dimen name="text_size_smallx">12sp</dimen>
+
+    <dimen name="text_size_smallxx">13sp</dimen>
+
+    <dimen name="text_size_smallxxx">14sp</dimen>
+
+    <dimen name="text_size_normal">15sp</dimen>
+
+    <dimen name="text_size_normalx">16sp</dimen>
+
+    <dimen name="text_size_normalxx">17sp</dimen>
+
+    <dimen name="text_size_normalxxx">18sp</dimen>
+
+    <dimen name="text_size_large">20sp</dimen>
+
+    <dimen name="text_size_largex">22sp</dimen>
+
+    <dimen name="text_size_largexx">25sp</dimen>
+
+    <dimen name="text_size_largexxx">28sp</dimen>
+
+    <dimen name="text_size_huge">32sp</dimen>
+
+    <dimen name="text_size_hugex">35sp</dimen>
+
+    <dimen name="text_size_hugexx">38sp</dimen>
+
+    <dimen name="margin_normal">15dp</dimen>
+
+    <dimen name="margin_normalx">17dp</dimen>
+
+    <dimen name="margin_normalxx">20dp</dimen>
+
+    <dimen name="margin_normalxxx">23dp</dimen>
+
+    <dimen name="margin_large">25dp</dimen>
+
+    <dimen name="margin_largex">28dp</dimen>
+
+    <dimen name="margin_largexx">30dp</dimen>
+
+    <dimen name="margin_largexxx">40dp</dimen>
+
+    <dimen name="margin_huge">45dp</dimen>
+
+    <dimen name="margin_hugex">45dp</dimen>
+
+    <dimen name="margin_hugexx">52dp</dimen>
+
+    <dimen name="margin_hugexxx">65dp</dimen>
+
+    <dimen name="margin_tiny">1dp</dimen>
+
+    <dimen name="margin_tinyx">2dp</dimen>
+
+    <dimen name="margin_tinyxx">3dp</dimen>
+
+    <dimen name="margin_tinyxxx">4dp</dimen>
+
+    <dimen name="margin_small">5dp</dimen>
+
+    <dimen name="margin_smallx">8dp</dimen>
+
+    <dimen name="margin_smallxx">10dp</dimen>
+
+    <dimen name="margin_smallxxx">12dp</dimen>
 </resources>

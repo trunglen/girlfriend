@@ -11,18 +11,27 @@ import truyencuoioffline.truyencuoi.truyencuoi.extensions.inflateLayout
 import truyencuoioffline.truyencuoi.truyencuoi.extensions.loadImage
 
 
-class GalleryGridViewAdapter(val context: Context, val listGirls: List<Girl>) : BaseAdapter() {
+class GalleryGridViewAdapter(val context: Context, val listGirls: List<Girl>, val isFavourite: OnDeleteListener? = null) : BaseAdapter() {
 
 //    constructor(context: Context, listGirls: List<Girl>) : this() {
 //        this.context = context
 //        this.girls = listGirls
 //    }
 
+    lateinit var deleteListener: OnDeleteListener
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         var girl = this.listGirls.get(position)
         var view = this.context.inflateLayout(R.layout.item_gallery)
         view.imvGirlThumb.loadImage(girl.thumb)
         view.tvName.text = girl.name
+        if (isFavourite!=null) {
+            view.btnDelete.visibility = View.VISIBLE
+            view.btnDelete.setOnClickListener {
+                this.isFavourite.onDeleteListener(position)
+                this.notifyDataSetChanged()
+            }
+        }
+
         return view
     }
 
@@ -37,5 +46,11 @@ class GalleryGridViewAdapter(val context: Context, val listGirls: List<Girl>) : 
     override fun getCount(): Int {
         return this.listGirls.size
     }
+
+
+}
+
+interface OnDeleteListener {
+    public fun onDeleteListener(postition: Int)
 
 }

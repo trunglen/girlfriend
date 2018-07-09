@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="@dimen/margin_large">
     <chat.girlfriend.girlfriendchat.common.views.SquareImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scaleType="centerCrop"
-        android:id="@+id/imvGirlGallery"
-        android:layout_margin="4dp"/>
+        android:id="@+id/imvGirlGallery" />
 </android.support.constraint.ConstraintLayout>
