@@ -122,7 +122,6 @@ class MainActivity : AppCompatActivity() {
                         (activity!!.application as MyApplication).removeLocalStorage(postition)
                         Toast.makeText(activity, "Delete From Your Favourite", Toast.LENGTH_LONG).show()
                     }
-
                 })
                 galleryHolder.adapter = adapter
                 firstFavourite = false
@@ -144,6 +143,7 @@ class MainActivity : AppCompatActivity() {
                 intent.putExtra("girl_gallery", girl.gallery)
                 startActivity(intent)
             }
+
             myRef.orderByKey().addChildEventListener(object : ChildEventListener {
                 override fun onCancelled(p0: DatabaseError?) {
                     TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
