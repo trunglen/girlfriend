@@ -13,7 +13,7 @@
         android:horizontalSpacing="0dp"
         android:stretchMode="columnWidth"
         android:numColumns="auto_fit"
-        android:id="@+id/newGrid">
+        android:id="@+id/hotGrid">
 
     </GridView>
 
