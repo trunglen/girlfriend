@@ -9,7 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import chat.girlfriend.girlfriendchat.common.views.SquareImageView
+import chat.girlfriend.girlfriendchat.R
 import com.squareup.picasso.Picasso
 
 var View.isVisible: Boolean
@@ -39,7 +39,7 @@ fun ViewGroup.inflate(@LayoutRes layoutRes: Int, attachToRoot: Boolean = false):
 }
 
 fun ImageView.loadImage(url: String) {
-    Picasso.with(context).load(url).into(this)
+    Picasso.with(context).load(url).placeholder(R.drawable.ic_loading_128).into(this)
 }
 
 

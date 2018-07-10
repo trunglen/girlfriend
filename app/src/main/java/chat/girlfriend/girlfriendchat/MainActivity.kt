@@ -15,6 +15,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import chat.girlfriend.girlfriendchat.models.Girl
+import chat.girlfriend.girlfriendchat.utils.NotificationActivity
 import chat.girlfriend.girlfriendchat.utils.getLocalStorage
 import chat.girlfriend.girlfriendchat.utils.removeLocalStorage
 import com.google.firebase.database.*
@@ -23,6 +24,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_favourite.*
 import kotlinx.android.synthetic.main.fragment_hot.*
 import kotlinx.android.synthetic.main.fragment_main.*
+import kotlinx.android.synthetic.main.layout_spinner.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -41,7 +43,6 @@ class MainActivity : AppCompatActivity() {
         container.adapter = mSectionsPagerAdapter
         container.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabs))
         tabs.addOnTabSelectedListener(TabLayout.ViewPagerOnTabSelectedListener(container))
-
     }
 
     /**
@@ -84,6 +85,7 @@ class MainActivity : AppCompatActivity() {
 
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
+            spin_kit.visibility = View.VISIBLE
             this.loadNew()
         }
 
@@ -119,7 +121,6 @@ class MainActivity : AppCompatActivity() {
                 override fun onChildRemoved(p0: DataSnapshot?) {
                     TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
                 }
-
             })
         }
     }
@@ -134,6 +135,7 @@ class MainActivity : AppCompatActivity() {
 
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
+            spin_kit.visibility = View.VISIBLE
             loadHot()
         }
 
@@ -174,6 +176,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
             })
+            spin_kit.visibility = View.INVISIBLE
         }
     }
 

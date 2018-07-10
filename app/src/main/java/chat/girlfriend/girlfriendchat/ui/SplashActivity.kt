@@ -15,7 +15,7 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
     }
 
-    private val SPLASH_DELAY = 3000
+    private val SPLASH_DELAY = 1500
 
     private val mHandler = Handler()
     private val mLauncher = Launcher()
