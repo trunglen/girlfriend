@@ -76,21 +76,19 @@ class MainActivity : AppCompatActivity() {
         // Write a message to the database
         var database = FirebaseDatabase.getInstance()
         var myRef = database.getReference("girl")
-        var girls = ArrayList<Girl>()
         override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                                   savedInstanceState: Bundle?): View? {
             val rootView = inflater.inflate(R.layout.fragment_main, container, false)
-            Log.d("lifecycle","onCreateView")
             return rootView
         }
 
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
             this.loadNew()
-            Log.d("lifecycle","onViewCreated")
         }
 
         fun loadNew() {
+            var girls = ArrayList<Girl>()
             var galleryAdapter = GalleryGridViewAdapter(context!!, girls)
             galleryHolder.adapter = galleryAdapter
             galleryHolder.setOnItemClickListener { parent, view, position, id ->
@@ -129,13 +127,18 @@ class MainActivity : AppCompatActivity() {
     class HotFragment : Fragment() {
         var database = FirebaseDatabase.getInstance()
         var myRef = database.getReference("girl")
-        var girls = ArrayList<Girl>()
         override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
             val rootView = inflater.inflate(R.layout.fragment_hot, container, false)
             return rootView
         }
 
-        fun loadNew() {
+        override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+            super.onViewCreated(view, savedInstanceState)
+            loadHot()
+        }
+
+        fun loadHot() {
+            var girls = ArrayList<Girl>()
             var galleryAdapter = GalleryGridViewAdapter(context!!, girls)
             hotGrid.adapter = galleryAdapter
             hotGrid.setOnItemClickListener { parent, view, position, id ->
@@ -158,8 +161,7 @@ class MainActivity : AppCompatActivity() {
 
                 override fun onChildAdded(p0: DataSnapshot?, p1: String?) {
                     var girl = p0!!.getValue<Girl>(Girl::class.java)!!
-                    Log.d("lifecycle", girl.is_hot.toString())
-
+                    Log.d("lifecycle", girl.name + girl.is_hot.toString())
                     if (girl.is_hot) {
                         girl.id = p0!!.key
                         girls.add(girl)
