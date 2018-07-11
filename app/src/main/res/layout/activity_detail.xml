@@ -20,9 +20,18 @@
         android:horizontalSpacing="0dp"
         android:stretchMode="columnWidth"
         android:numColumns="auto_fit"
-        android:id="@+id/lvGirls">
-
+        android:id="@+id/lvGirls"
+        android:layout_marginBottom="@dimen/margin_hugexxxx">
     </GridView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_hugexx"
+        android:layout_gravity="bottom"
+        android:text="@string/alert"
+        android:id="@+id/tvAlert"
+        android:textColor="#FF0000"
+    />
     <include layout="@layout/item_ads"/>
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"

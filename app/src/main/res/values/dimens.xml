@@ -82,6 +82,7 @@
     <dimen name="margin_hugexx">52dp</dimen>
 
     <dimen name="margin_hugexxx">65dp</dimen>
+    <dimen name="margin_hugexxxx">115dp</dimen>
 
     <dimen name="margin_tiny">1dp</dimen>
 

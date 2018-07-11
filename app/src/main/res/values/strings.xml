@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Find Girl Friends</string>
+    <string name="alert">Girl profile are summited by user on website have link with app.We are not responsible for the accuracy of the content.Please report for us in case of any violation by click HERE</string>
     <string name="tab_text_1">New Girls</string>
     <string name="tab_text_2">My Favourite</string>
     <string name="tab_text_3">Hot Girls</string>

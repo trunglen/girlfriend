@@ -8,6 +8,37 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:308621545316:android:7956b8bf88e8c343",
+        "android_client_info": {
+          "package_name": "chat.girlfriend.findgirlfriend"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "308621545316-a65obvpn23tqje3ni4ge17khfc6h6iem.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAa8gpiKpw8rJaEt3OWKba_nTfv82-RFhM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:308621545316:android:7834939f3db87fa7",
         "android_client_info": {
           "package_name": "chat.girlfriend.girlfriendchat"
