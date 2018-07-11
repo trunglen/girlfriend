@@ -7,13 +7,10 @@ import chat.girlfriend.girlfriendchat.R
 import kotlinx.android.synthetic.main.activity_girl_info.*
 import android.webkit.WebViewClient
 import android.webkit.WebChromeClient
+import kotlinx.android.synthetic.main.item_ads.*
 
 
-
-
-
-
-class GirlInfoActivity : AppCompatActivity() {
+class GirlInfoActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,5 +22,6 @@ class GirlInfoActivity : AppCompatActivity() {
         wvFb.setWebViewClient(WebViewClient())
         wvFb.getSettings().setJavaScriptEnabled(true)
         wvFb.loadUrl(fbUrl.toString())
+        requestAds(banner)
     }
 }

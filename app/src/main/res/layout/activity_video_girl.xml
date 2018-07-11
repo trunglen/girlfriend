@@ -8,17 +8,19 @@
     android:background="@drawable/bg_girl_friend">
 
     <!-- View that will be hidden when video goes fullscreen -->
-    <RelativeLayout
+    <FrameLayout
         android:id="@+id/nonVideoLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent">
 
         <chat.girlfriend.girlfriendchat.ui.VideoEnabledWebView
             android:id="@+id/webView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/margin_huge"/>
+        <include layout="@layout/item_ads"/>
 
-    </RelativeLayout>
+    </FrameLayout>
 
     <!-- View where the video will be shown when video goes fullscreen -->
     <RelativeLayout

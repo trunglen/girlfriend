@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import chat.girlfriend.girlfriendchat.models.Girl
+import chat.girlfriend.girlfriendchat.ui.BaseActivity
 import chat.girlfriend.girlfriendchat.ui.DetailImageAdapter
 import chat.girlfriend.girlfriendchat.ui.GirlInfoActivity
 import chat.girlfriend.girlfriendchat.ui.VideoGirl
@@ -16,8 +17,9 @@ import chat.girlfriend.girlfriendchat.utils.putLocalStorage
 import com.himangi.imagepreview.ImagePreviewActivity
 import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.fab_layout.*
+import kotlinx.android.synthetic.main.item_ads.*
 
-class DetailActivity : AppCompatActivity() {
+class DetailActivity : BaseActivity() {
     var showFab = false
     lateinit var girl: Girl
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,19 +64,7 @@ class DetailActivity : AppCompatActivity() {
                 Toast.makeText(this, "Added To Favourite List", Toast.LENGTH_LONG).show()
             }
         }
-//        myRef.child(girlId.toString()).addValueEventListener(object : ValueEventListener {
-//            override fun onCancelled(p0: DatabaseError?) {
-//                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-//            }
-//
-//            override fun onDataChange(p0: DataSnapshot?) {
-//                val girl =  p0!!.getValue<Girl>(Girl::class.java)!!
-//                galleryUrl.addAll(girl.gallery)
-//                adapter.notifyDataSetChanged()
-//            }
-//
-//        })
-
+        requestAds(banner)
     }
 
     fun showMenu() {

@@ -9,25 +9,14 @@ import android.view.View.SYSTEM_UI_FLAG_VISIBLE
 import android.view.WindowManager
 import android.view.View.SYSTEM_UI_FLAG_LOW_PROFILE
 import android.webkit.WebView
+import kotlinx.android.synthetic.main.item_ads.*
 
 
-
-class VideoGirl : AppCompatActivity() {
+class VideoGirl : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_video_girl)
-//        vdGirl.setVideoPath("https://www.w3schools.com/html/mov_bbb.mp4")
-//        vdGirl.start()
-        val html = "<!DOCTYPE html> \n" +
-                "<html> \n" +
-                "<body style=\"background:black\"> \n" +
-                "\n" +
-                "<video width=\"100%\" controls>\n" +
-                "  <source src=\"https://www.w3schools.com/html/mov_bbb.mp4\" type=\"video/mp4\">\n" +
-                "</video>\n" +
-                "</body> \n" +
-                "</html>\n"
         val loadingView = layoutInflater.inflate(R.layout.view_loading_video, null)
        val  webChromeClient = object : VideoEnabledWebChromeClient(nonVideoLayout, videoLayout, loadingView, webView) // See all available constructors...
         {
@@ -63,5 +52,6 @@ class VideoGirl : AppCompatActivity() {
 
         // Navigate everywhere you want, this classes have only been tested on YouTube's mobile site
         webView.loadUrl("https://www.w3schools.com/html/mov_bbb.mp4")
+        requestAds(banner)
     }
 }

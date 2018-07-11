@@ -4,5 +4,6 @@
     <string name="tab_text_2">My Favourite</string>
     <string name="tab_text_3">Hot Girls</string>
     <string name="action_settings">Settings</string>
+    <string name="banner_id">ca-app-pub-9374507533753194/7973041757</string>
     <string name="section_format">Hello World from section: %1$d</string>
 </resources>

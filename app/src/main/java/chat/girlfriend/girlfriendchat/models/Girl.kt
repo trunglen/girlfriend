@@ -8,6 +8,7 @@ class Girl(
         var thumb: String = "",
         var gallery: ArrayList<String> = ArrayList<String>(),
         var fb_url: String = "",
-        var is_hot: Boolean = false,
-        var video_url: String = ""
+        var hot: Boolean = false,
+        var video_url: String = "",
+        var time_stamp: Long = 0
 )

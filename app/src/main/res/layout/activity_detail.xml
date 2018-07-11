@@ -23,6 +23,7 @@
         android:id="@+id/lvGirls">
 
     </GridView>
+    <include layout="@layout/item_ads"/>
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -31,4 +32,5 @@
         android:id="@+id/btnMainMenu"
         android:layout_margin="16dp"/>
     <include layout="@layout/fab_layout"/>
+
 </FrameLayout>

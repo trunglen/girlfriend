@@ -16,5 +16,4 @@
         android:id="@+id/hotGrid">
 
     </GridView>
-    <include layout="@layout/layout_spinner"/>
 </FrameLayout>

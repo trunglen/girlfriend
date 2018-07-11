@@ -15,8 +15,6 @@
         android:stretchMode="columnWidth"
         android:numColumns="auto_fit"
         android:id="@+id/galleryHolder">
-
     </GridView>
-    <include layout="@layout/layout_spinner"/>
 
 </FrameLayout>

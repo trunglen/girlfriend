@@ -34,10 +34,7 @@
             </intent-filter>
         </activity>
 
-        <service
-            android:name=".common.NewGirlService"
-            android:enabled="true"
-            android:exported="true"></service>
+        <service android:name=".common.NewGirlService"></service>
     </application>
 
 </manifest>
